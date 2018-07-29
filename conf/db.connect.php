@@ -3,7 +3,7 @@
 $dbhost="localhost";
 $dbname="id6468118_dbtest";
 $dbschem="name";
-$dbuser="id6468118_test";
+$dbuser="sled";
 $bdpaswd="1Xthysirf";
 //echo "$dbhost, $dbuser, $$bdpaswd, $dbname";
 $connect= mysqli_connect($dbhost, $dbuser, $bdpaswd, $dbname);
