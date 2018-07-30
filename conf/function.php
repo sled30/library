@@ -1,7 +1,8 @@
 <?php
 	require_once 'db.connect.php'; 
-	public function autorysed($loginpost, $passwdpost)
+	function autorysed($loginpost, $passwdpost)
 	{
+		global $connect;
 	$passwd=$passwdpost;
 	$md5passwd=md5($passwd);
 	$login=$loginpost;
