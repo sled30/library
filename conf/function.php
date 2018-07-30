@@ -56,4 +56,12 @@
 						$addjanr=mysqli_query($connect, $janrsql);
 						echo "жанр добавлен";
 						}
+		function bookadd($namebook, $autor, $janr)
+		{
+			global $connect;
+				$sqladdbook="insert into  books(name, avtor, janr, anotas ) value('".$_POST["namebook"]. "', '".$_POST["autor"]."', '".$_POST["janr"]."', '"
+		.$_POST["anotacia"]."')";
+		$addbookdb=mysqli_query($connect, $sqladdbook);
+		echo "книга".$_POST["namebook"]." добавлена в БД"; 
+		}
 ?>

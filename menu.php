@@ -8,14 +8,7 @@ if(isset($_SESSION['role']))
      header('Location:https://max-30ru.000webhostapp.com/index.php');
  }
 																				/*книга*/
-if(isset($_POST["namebook"]) && isset($_POST["autor"]) && isset($_POST["janr"]) &&  isset($_POST["namebook"]))
-{
-	/*	id 	name 	avtor 	janr 	anotas */
-	$sqladdbook="insert into  books(name, avtor, janr, anotas ) value('".$_POST["namebook"]. "', '".$_POST["autor"]."', '".$_POST["janr"]."', '"
-	.$_POST["anotacia"]."')";
-	$addbookdb=mysqli_query($connect, $sqladdbook);
-	$messaddbook="книга".$_POST["namebook"]." добавлена в БД"; 
-}
+
 																	/*енд*/
 ?>
 <!DOCTYPE html>
@@ -119,7 +112,11 @@ janradd($_POST["janrname"], $_POST["acsses"]);
         <p> <input type='submit' value='сохранить книгу' >
         </p> </form>";
         exit;
-	}								
+	}				/*бук адд*/
+	if(isset($_POST["namebook"]) && isset($_POST["autor"]) && isset($_POST["janr"]) )
+{
+bookadd($_POST["namebook"], $_POST["autor"], $_POST["janr"]);
+}				
 																
 									/*конец блока*/
     ?>
