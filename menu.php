@@ -1,19 +1,13 @@
 <?php
 require_once 'conf/db.connect.php'; 
+require_once 'conf/function.php';
 session_start();
 if(isset($_SESSION['role']))
  {
      if($_SESSION['role'] !=1)
      header('Location:https://max-30ru.000webhostapp.com/index.php');
  }
- if(isset($_POST["autorname"]) && isset($_POST["autorlastname"]))
-  {
-	  $autorname=$_POST["autorname"];
-	  $autorlastname=$_POST["autorlastname"];
-	 $sqladdautor="insert into avtor (name, lastname) value ('$autorname', '$autorlastname' )";
-	 $addautordb=mysqli_query($connect, $sqladdautor);
-	$messcreateautor="автор добавлен";
-	}																			/*жанр*/
+																	/*жанр*/
 if(isset($_POST["janrname"]) && isset($_POST["acsses"]))
 {
 	$janrname=$_POST["janrname"];
@@ -69,6 +63,10 @@ echo "<form action='menu.php' method='POST'>
 exit;
 									/*конец блокаж*/
 }
+	if(isset($_POST["autorname"]) && isset($_POST["autorlastname"]))
+	{
+		addautor($_POST["autorname"], $_POST["autorlastname"]);
+	}
 								/* блок описывает сохранения жанра*/
     if(isset($_POST["createjanr"]))
     {
@@ -139,8 +137,6 @@ exit;
     <tr><td><input type='submit' value='отчет о взятых книгах' name='otchet'</td></tr>
      </table></centr>
 </form>
-<?php 
-if(isset($messcreateautor)) echo $messcreateautor  ?>
 <?php
 if(isset($messjanradd)) echo $messjanradd ?>
 <?php
@@ -151,18 +147,9 @@ if(isset($messaddbook)) echo $messaddbook?>
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-     <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='menu.php'>Управление книгами</a>
-      </li>
-      <li><a href='useradd.php'>Управление пользователями</a>
-      </li>
-      <li><a href='getbook.php'>выдача книг</a>
-      </li>
-        <li><a href='library.php'>выданые книг</a>
-      </li>
-    </ul>
+     <?php
+     require_once 'conf/leftconsol.php';
+     ?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>

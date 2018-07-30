@@ -38,4 +38,13 @@
 			$useradd=mysqli_query($connect, $sqladduser); 
 			}
 		}
+		function addautor($autorname, $autorlastname)
+		{
+			 global $connect;
+			$autorname=$_POST["autorname"];
+			$autorlastname=$_POST["autorlastname"];
+			$sqladdautor="insert into avtor (name, lastname) value ('$autorname', '$autorlastname' )";
+			$addautordb=mysqli_query($connect, $sqladdautor);
+			echo"автор добавлен";
+		}
 ?>
