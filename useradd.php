@@ -1,5 +1,6 @@
 <?php
 require_once 'conf/db.connect.php'; 
+require_once 'conf/function.php';
 session_start();
 if(!isset($_SESSION['role']))
   header('Location:https://max-30ru.000webhostapp.com/index.php');
@@ -7,16 +8,8 @@ if(!isset($_SESSION['role']))
 if(isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["befdate"]) && isset($_POST["login"]) && isset($_POST["passwd"])
 && isset($_POST["email"]) && isset($_POST["phone"]))
 {
-	useraddfromdb($_POST["name"],  $_POST["lastname"], $_POST["befdate"], $_POST["login"], $_POST["passwd"], $_POST["email"], $_POST["phone"]);
-	/*if(($_SESSION["role"]!=1) && ($_POST["role"]=1))
-	exit;
-	else
-	$passwd=md5($_POST["passwd"]);
-	$sqladduser="insert into users (name, lastname, befdat, login, password, mail, phone, role) 
-	value('".$_POST["name"]."', '".$_POST["lastname"]."', '".$_POST["befdate"]."', '".$_POST["login"]."', '".$passwd."', '".$_POST["email"]."', '
-	".$_POST["phone"]."', '".$_POST["role"]."')";
-	$useradd=mysqli_query($connect, $sqladduser);
-}*/
+	useraddfromdb($_POST['name'],  $_POST['lastname'], $_POST['befdate'], $_POST['login'], $_POST['passwd'], $_POST['email'], $_POST['phone']);
+}
  ?>
 <!DOCTYPE html>
 <html>
@@ -65,7 +58,7 @@ if(isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["befdate"]
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
     <?php
- require_once ''conf/leftconsol.php;
+ require_once 'conf/leftconsol.php';
  ?>
     <!-- Меню -->
     <!-- Навигация -->
