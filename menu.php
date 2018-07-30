@@ -7,16 +7,6 @@ if(isset($_SESSION['role']))
      if($_SESSION['role'] !=1)
      header('Location:https://max-30ru.000webhostapp.com/index.php');
  }
-																	/*жанр*/
-if(isset($_POST["janrname"]) && isset($_POST["acsses"]))
-{
-	$janrname=$_POST["janrname"];
-	$acsses=$_POST["acsses"];
-	$janrsql="insert into janr (janr, acces) value ('$janrname', '$acsses')";
-	$addjanr=mysqli_query($connect, $janrsql);
-	$messjanradd="жанр добавлен";
-}
-																				/* енд*/
 																				/*книга*/
 if(isset($_POST["namebook"]) && isset($_POST["autor"]) && isset($_POST["janr"]) &&  isset($_POST["namebook"]))
 {
@@ -77,6 +67,11 @@ echo "<form action='menu.php' method='POST'>
 	<tr><td><input type='submit'></td><td></td></tr>
 </form>";
 exit;
+}
+									/*добавление жанра*/
+if(isset($_POST["janrname"]) && isset($_POST["acsses"]))
+{
+janradd($_POST["janrname"], $_POST["acsses"]);
 }
 									/*конец блока*/
 									/*создание книги*/

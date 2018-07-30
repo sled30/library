@@ -47,4 +47,13 @@
 			$addautordb=mysqli_query($connect, $sqladdautor);
 			echo"автор добавлен";
 		}
+		function janradd($janrname, $acsses)
+						{
+							global $connect;
+						$janrname=$_POST["janrname"];
+						$acsses=$_POST["acsses"];
+						$janrsql="insert into janr (janr, acces) value ('$janrname', '$acsses')";
+						$addjanr=mysqli_query($connect, $janrsql);
+						echo "жанр добавлен";
+						}
 ?>
