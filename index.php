@@ -1,6 +1,7 @@
 <?php
-session_start();
 require_once 'conf/db.connect.php';
+require_once 'conf/function.php';
+session_start();
 if(isset($_POST['login']) && isset($_POST['passwd']))
 {
 	$login=$_POST['login'];

@@ -7,13 +7,16 @@ if(!isset($_SESSION['role']))
 if(isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["befdate"]) && isset($_POST["login"]) && isset($_POST["passwd"])
 && isset($_POST["email"]) && isset($_POST["phone"]))
 {
-	if(($_SESSION["role"]!=1) && ($_POST["role"]=1))
+	useraddfromdb($_POST["name"],  $_POST["lastname"], $_POST["befdate"], $_POST["login"], $_POST["passwd"], $_POST["email"], $_POST["phone"]);
+	/*if(($_SESSION["role"]!=1) && ($_POST["role"]=1))
 	exit;
 	else
 	$passwd=md5($_POST["passwd"]);
-	$sqladduser="insert into users (name, lastname, befdat, login, password, mail, phone, role) value('".$_POST["name"]."', '".$_POST["lastname"]."', '".$_POST["befdate"]."', '".$_POST["login"]."', '".$passwd."', '".$_POST["email"]."', '".$_POST["phone"]."', '".$_POST["role"]."')";
+	$sqladduser="insert into users (name, lastname, befdat, login, password, mail, phone, role) 
+	value('".$_POST["name"]."', '".$_POST["lastname"]."', '".$_POST["befdate"]."', '".$_POST["login"]."', '".$passwd."', '".$_POST["email"]."', '
+	".$_POST["phone"]."', '".$_POST["role"]."')";
 	$useradd=mysqli_query($connect, $sqladduser);
-}
+}*/
  ?>
 <!DOCTYPE html>
 <html>
@@ -61,18 +64,9 @@ if(isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["befdate"]
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-  <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='menu.php'>Управление книгами</a>
-      </li>
-      <li><a href='useradd.php'>Управление пользователями</a>
-      </li>
-      <li><a href='getbook.php'>выдача книг</a>
-      </li>
-        <li><a href='library.php'>выданые книг</a>
-      </li>
-    </ul>
+    <?php
+ require_once ''conf/leftconsol.php;
+ ?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>

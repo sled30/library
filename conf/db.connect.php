@@ -4,7 +4,7 @@ $dbname="id6468118_dbtest";
 $dbschem="name";
 $dbuser="id6468118_test";
 $bdpaswd="1Xthysirf";
-$connect= mysqli_connect($dbhost, $dbuser, $bdpaswd, $dbname);
+global $connect= mysqli_connect($dbhost, $dbuser, $bdpaswd, $dbname);
 if(!$connect) 
 {
    echo "Ошибка: Невозможно установить соединение с MySQL." . PHP_EOL;
