@@ -50,7 +50,7 @@ $messaddgetbook="книга выдана";
         while($book=mysqli_fetch_assoc($bookdb))
         {
         echo "<option value='".$book['id']."'>".$book['name']."</option>";
-                  }
+          }
         ?>
         </select>
 	  </td>
@@ -62,7 +62,7 @@ $messaddgetbook="книга выдана";
         while($user=mysqli_fetch_assoc($getuserdb))
         {
         echo "<option value='".$user['id']."'>".$user['login']."</option>";
-                  }
+          }
         ?>
 		<td>
          <tr><td> <input type='submit' value='выдать' name='getbook'> </td></tr>
@@ -70,9 +70,8 @@ $messaddgetbook="книга выдана";
     </form>
     <?php 
     if(isset($_POST['bookname']) && isset($_POST['username']))
-    {
-		getbook($_POST['bookname'], $_POST['username'])
-	}
+    
+		getbook($_POST['bookname'], $_POST['username']);
     ?>
 
     <!-- Область основного контента -->

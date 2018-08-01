@@ -70,6 +70,5 @@
 		$sqladdgetbook="insert into book_vidan (bookid, userid) value (".$_POST['bookname'].", ". $_POST['username']." )";
 		$addgetbookdb=mysqli_query($connect, $sqladdgetbook);
 		echo="книга выдана";	
-		
 		}
 ?>

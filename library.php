@@ -73,7 +73,7 @@ if(!isset($_SESSION['role']))
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-   <?php require_once 'conf/leftconsol.php'?>
+   <?php require_once 'conf/leftconsol.php'  ?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>
