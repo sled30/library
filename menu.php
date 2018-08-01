@@ -129,10 +129,6 @@ bookadd($_POST["namebook"], $_POST["autor"], $_POST["janr"]);
     <tr><td><input type='submit' value='отчет о взятых книгах' name='otchet'</td></tr>
      </table></centr>
 </form>
-<?php
-if(isset($messjanradd)) echo $messjanradd ?>
-<?php
-if(isset($messaddbook)) echo $messaddbook?>
     <!-- Область основного контента -->
   </div>
   <div id="nav">
