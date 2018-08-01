@@ -6,12 +6,12 @@ if(!isset($_SESSION['role']))
   header('Location:https://max-30ru.000webhostapp.com/index.php');
 	//id 	bookid 	userid 	createdate 	finfshdate 
 	
-if(isset($_POST['bookname']) && isset($_POST['username']))
+/*if(isset($_POST['bookname']) && isset($_POST['username']))
 {
 $sqladdgetbook="insert into book_vidan (bookid, userid) value (".$_POST['bookname'].", ". $_POST['username']." )";
 $addgetbookdb=mysqli_query($connect, $sqladdgetbook);
 $messaddgetbook="книга выдана";	
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,12 @@ $messaddgetbook="книга выдана";
          <tr><td> <input type='submit' value='выдать' name='getbook'> </td></tr>
     </table>
     </form>
-    <?php  if(isset($messaddgetbook)) echo $messaddgetbook?>
+    <?php 
+    if(isset($_POST['bookname']) && isset($_POST['username']))
+    {
+		getbook($_POST['bookname'], $_POST['username'])
+	}
+    ?>
 
     <!-- Область основного контента -->
   </div>
@@ -76,18 +81,7 @@ $messaddgetbook="книга выдана";
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-  <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='menu.php'>Управление книгами</a>
-      </li>
-      <li><a href='useradd.php'>Управление пользователями</a>
-      </li>
-      <li><a href='getbook.php'>выдача книг</a>
-      </li>
-        <li><a href='library.php'>выданые книг</a>
-      </li>
-    </ul>
+<?php  require_once 'conf/leftconsol.php'; ?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>
