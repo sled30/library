@@ -1,17 +1,10 @@
 <?php
 require_once 'conf/db.connect.php'; 
+require_once 'conf/function.php'; 
 session_start();
 
-if(!isset($_SESSION['role']))
-  header('Location:https://max-30ru.000webhostapp.com/index.php');
 	//id 	bookid 	userid 	createdate 	finfshdate 
 	
-/*if(isset($_POST['bookname']) && isset($_POST['username']))
-{
-$sqladdgetbook="insert into book_vidan (bookid, userid) value (".$_POST['bookname'].", ". $_POST['username']." )";
-$addgetbookdb=mysqli_query($connect, $sqladdgetbook);
-$messaddgetbook="книга выдана";	
-}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,50 +33,52 @@ $messaddgetbook="книга выдана";
     <h1>Добро пожаловать</h1>
     <!--	id 	bookid 	userid 	createdate 	finfshdate -->
     
-    <form action='getbook.php' method='POST'>
+    <form action='getbook.php' method='get'>
 		<table>
-			<tr><td> <select name='bookname'> 
-				<?php
+			<tr>
+			
+			<?php
+        
+         $sqlbook="select id, name from books";
+        $bookdb=mysqli_query($connect, $sqlbook);
+        while($book=mysqli_fetch_assoc($bookdb))
+        {
+            /*<input type="checkbox" name="option2" value="a2">Windows 2000<Br>*/
+        echo "<tr><td ><a href=https://max-30ru.000webhostapp.com/getbook.php?book=".$book['id'].">";
+        echo $book['name']."</a></td> </tr>";
+                  }
+        ?>
+			<!--<select name='bookname'> 
+				<?php/*
         
          $sqlbook="select id, name from books";
         $bookdb=mysqli_query($connect, $sqlbook);
         while($book=mysqli_fetch_assoc($bookdb))
         {
         echo "<option value='".$book['id']."'>".$book['name']."</option>";
-          }
-        ?>
-        </select>
+                  }
+        */?>
+        </select>-->
 	  </td>
-    <td><select name='username'> 
-				<?php
-        
-         $sqlgetuser="select id, login from users";
-        $getuserdb=mysqli_query($connect, $sqlgetuser);
-        while($user=mysqli_fetch_assoc($getuserdb))
-        {
-        echo "<option value='".$user['id']."'>".$user['login']."</option>";
-          }
-        ?>
-		<td>
-         <tr><td> <input type='submit' value='выдать' name='getbook'> </td></tr>
+    <!--<td><select name='username'> -->
+			
+		<!--<td>
+         <tr><td> <input type='submit' value='выдать' name='getbook'> </td></tr>-->
     </table>
     </form>
-    <?php 
-    if(isset($_POST['bookname']) && isset($_POST['username']))
-    
-		getbook($_POST['bookname'], $_POST['username']);
-    ?>
-
+  <?php
+  if(isset($_GET['book']))
+{
+getbook($_GET['book']);
+}
+?>
     <!-- Область основного контента -->
   </div>
   <div id="nav">
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-<?php  require_once 'conf/leftconsol.php'; ?>
-    <!-- Меню -->
-    <!-- Навигация -->
-  </div>
+  <?php require_once 'conf/leftconsol.php'?>
   <div id="footer">
     <!-- Нижняя часть страницы -->
     &copy; копирайт, 2000 &ndash; 2015

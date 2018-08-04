@@ -64,11 +64,12 @@
 		$addbookdb=mysqli_query($connect, $sqladdbook);
 		echo "книга".$_POST["namebook"]." добавлена в БД"; 
 		}
-		function getbook($bookname, $username)
+		function getbook($getbook)
 		{
 		global $connect;		
-		$sqladdgetbook="insert into book_vidan (bookid, userid) value (".$_POST['bookname'].", ". $_POST['username']." )";
+		$getuser=$_SESSION['id'];
+		$sqladdgetbook="insert into book_vidan (bookid, userid) value ('".$_GET['book']."', '$getuser')";
 		$addgetbookdb=mysqli_query($connect, $sqladdgetbook);
-		echo="книга выдана";	
+		echo "книга выдана";	
 		}
 ?>
